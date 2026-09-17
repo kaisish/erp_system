@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  db-auth:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: erp
+      POSTGRES_PASSWORD: erp
+      POSTGRES_DB: erp_auth
+    ports: ['5433:5432']
+    volumes: [auth_data:/var/lib/postgresql/data]
+  db-main:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: erp
+      POSTGRES_PASSWORD: erp
+      POSTGRES_DB: erp_main
+    ports: ['5434:5432']
+    volumes: [main_data:/var/lib/postgresql/data]
+volumes:
+  auth_data:
+  main_data:
